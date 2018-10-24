@@ -133,10 +133,15 @@ void lv_roller_set_selected(lv_obj_t * roller, uint16_t sel_opt, bool anim_en)
 #if USE_LV_ANIMATION == 0
     anim_en = false;
 #endif
+    lv_roller_ext_t * ext = lv_obj_get_ext_attr(roller);
 
     if(lv_roller_get_selected(roller) == sel_opt) return;
-
+    if(sel_opt == 0xffff)
+    	sel_opt = ext->ddlist.option_cnt-1;
+    else
+    	sel_opt = sel_opt % ext->ddlist.option_cnt;
     lv_ddlist_set_selected(roller, sel_opt);
+
     refr_position(roller, anim_en);
 }
 
@@ -353,13 +358,13 @@ static lv_res_t lv_roller_signal(lv_obj_t * roller, lv_signal_t sign, void * par
     } else if(sign == LV_SIGNAL_CONTROLL) {
         char c = *((char *)param);
         if(c == LV_GROUP_KEY_RIGHT || c == LV_GROUP_KEY_DOWN) {
-            if(ext->ddlist.sel_opt_id + 1 < ext->ddlist.option_cnt) {
+//            if(ext->ddlist.sel_opt_id + 1 < ext->ddlist.option_cnt) {
                 lv_roller_set_selected(roller, ext->ddlist.sel_opt_id + 1, true);
-            }
+//            }
         } else if(c == LV_GROUP_KEY_LEFT || c == LV_GROUP_KEY_UP) {
-            if(ext->ddlist.sel_opt_id > 0) {
+//            if(ext->ddlist.sel_opt_id > 0) {
                 lv_roller_set_selected(roller, ext->ddlist.sel_opt_id - 1, true);
-            }
+//            }
         } else if(c == LV_GROUP_KEY_ENTER) {
             ext->ddlist.sel_opt_id_ori = ext->ddlist.sel_opt_id;        /*Set the entered value as default*/
             if(ext->ddlist.action) res = ext->ddlist.action(roller);
