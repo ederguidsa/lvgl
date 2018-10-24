@@ -242,7 +242,10 @@ static bool lv_roller_design(lv_obj_t * roller, const lv_area_t * mask, lv_desig
         rect_area.x1 = roller->coords.x1;
         rect_area.x2 = roller->coords.x2;
 
-        lv_draw_rect(&rect_area, mask, ext->ddlist.sel_style, opa_scale);
+        //        lv_draw_rect(&rect_area, mask, ext->ddlist.sel_style, opa_scale);
+        /* Bind roller sel style to the backgound style */
+        lv_draw_rect(&rect_area, mask, style, opa_scale);
+        lv_roller_set_style(roller,LV_ROLLER_STYLE_SEL,style);
     }
     /*Post draw when the children are drawn*/
     else if(mode == LV_DESIGN_DRAW_POST) {
