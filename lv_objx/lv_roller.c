@@ -175,6 +175,11 @@ void lv_roller_set_style(lv_obj_t * roller, lv_roller_style_t type, lv_style_t *
     }
 }
 
+/**
+ * Set roller text aligment
+ * @param roller pointer to a roller object
+ * @param txt_align which alignment type should be set
+ */
 void lv_roller_set_txt_align(lv_obj_t * roller, lv_roller_txt_align_t txt_align)
 {
 	lv_roller_ext_t * ext = lv_obj_get_ext_attr(roller);

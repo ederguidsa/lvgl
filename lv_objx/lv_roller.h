@@ -139,6 +139,11 @@ static inline void lv_roller_set_anim_time(lv_obj_t *roller, uint16_t anim_time)
  */
 void lv_roller_set_style(lv_obj_t *roller, lv_roller_style_t type, lv_style_t *style);
 
+/**
+ * Set roller text aligment
+ * @param roller pointer to a roller object
+ * @param txt_align which alignment type should be set
+ */
 void lv_roller_set_txt_align(lv_obj_t * roller, lv_roller_txt_align_t txt_align);
 
 /*=====================
