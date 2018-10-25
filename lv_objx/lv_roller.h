@@ -39,6 +39,9 @@ extern "C" {
 /*Data of roller*/
 typedef struct {
     lv_ddlist_ext_t ddlist; /*Ext. of ancestor*/
+    lv_label_align_t label_align;
+    lv_align_t obj_align;
+    lv_txt_flag_t txt_flag;
     /*New data for this type */
 } lv_roller_ext_t;
 
@@ -47,6 +50,13 @@ enum {
     LV_ROLLER_STYLE_SEL,
 };
 typedef uint8_t lv_roller_style_t;
+
+enum{
+	LV_ROLLER_TXT_CENTER,
+	LV_ROLLER_TXT_LEFT,
+	LV_ROLLER_TXT_RIGHT,
+};
+typedef uint8_t lv_roller_txt_align_t;
 
 /**********************
  * GLOBAL PROTOTYPES
@@ -128,6 +138,8 @@ static inline void lv_roller_set_anim_time(lv_obj_t *roller, uint16_t anim_time)
  * @param style pointer to a style
  */
 void lv_roller_set_style(lv_obj_t *roller, lv_roller_style_t type, lv_style_t *style);
+
+void lv_roller_set_txt_align(lv_obj_t * roller, lv_roller_txt_align_t txt_align);
 
 /*=====================
  * Getter functions
