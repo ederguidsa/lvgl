@@ -333,7 +333,7 @@ static lv_res_t lv_roller_signal(lv_obj_t * roller, lv_signal_t sign, void * par
     if(sign == LV_SIGNAL_STYLE_CHG) {
         lv_obj_set_height(lv_page_get_scrl(roller),
                           lv_obj_get_height(ext->ddlist.label) + lv_obj_get_height(roller));
-//        lv_obj_align(ext->ddlist.label, NULL, ext->obj_align, 0, 0);
+        lv_obj_align(ext->ddlist.label, NULL, ext->obj_align, 0, 0);
         lv_ddlist_set_selected(roller, ext->ddlist.sel_opt_id);
         refr_position(roller, false);
     } else if(sign == LV_SIGNAL_CORD_CHG) {
@@ -345,7 +345,7 @@ static lv_res_t lv_roller_signal(lv_obj_t * roller, lv_signal_t sign, void * par
             lv_obj_set_height(lv_page_get_scrl(roller),
                               lv_obj_get_height(ext->ddlist.label) + lv_obj_get_height(roller));
 
-//            lv_obj_align(ext->ddlist.label, NULL, ext->obj_align, 0, 0);
+            lv_obj_align(ext->ddlist.label, NULL, ext->obj_align, 0, 0);
             lv_ddlist_set_selected(roller, ext->ddlist.sel_opt_id);
             refr_position(roller, false);
         }
@@ -384,11 +384,11 @@ static lv_res_t lv_roller_signal(lv_obj_t * roller, lv_signal_t sign, void * par
 
     } else if(sign == LV_SIGNAL_CONTROLL) {
         char c = *((char *)param);
-        if(c == LV_GROUP_KEY_RIGHT || c == LV_GROUP_KEY_DOWN) {
+        if(c == LV_GROUP_KEY_RIGHT /*|| c == LV_GROUP_KEY_DOWN*/) {
 //            if(ext->ddlist.sel_opt_id + 1 < ext->ddlist.option_cnt) {
                 lv_roller_set_selected(roller, ext->ddlist.sel_opt_id + 1, true);
 //            }
-        } else if(c == LV_GROUP_KEY_LEFT || c == LV_GROUP_KEY_UP) {
+        } else if(c == LV_GROUP_KEY_LEFT /*|| c == LV_GROUP_KEY_UP*/) {
 //            if(ext->ddlist.sel_opt_id > 0) {
                 lv_roller_set_selected(roller, ext->ddlist.sel_opt_id - 1, true);
 //            }
