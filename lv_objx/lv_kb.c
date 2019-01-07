@@ -330,25 +330,33 @@ lv_action_t lv_kb_get_hide_action(const lv_obj_t * kb)
  */
 lv_style_t * lv_kb_get_style(const lv_obj_t * kb, lv_kb_style_t type)
 {
+    lv_style_t * style = NULL;
+
     switch(type) {
         case LV_KB_STYLE_BG:
-            return lv_btnm_get_style(kb, LV_BTNM_STYLE_BG);
+            style = lv_btnm_get_style(kb, LV_BTNM_STYLE_BG);
+            break;
         case LV_KB_STYLE_BTN_REL:
-            return lv_btnm_get_style(kb, LV_BTNM_STYLE_BTN_REL);
+            style = lv_btnm_get_style(kb, LV_BTNM_STYLE_BTN_REL);
+            break;
         case LV_KB_STYLE_BTN_PR:
-            return lv_btnm_get_style(kb, LV_BTNM_STYLE_BTN_PR);
+            style = lv_btnm_get_style(kb, LV_BTNM_STYLE_BTN_PR);
+            break;
         case LV_KB_STYLE_BTN_TGL_REL:
-            return lv_btnm_get_style(kb, LV_BTNM_STYLE_BTN_TGL_REL);
+            style = lv_btnm_get_style(kb, LV_BTNM_STYLE_BTN_TGL_REL);
+            break;
         case LV_KB_STYLE_BTN_TGL_PR:
-            return lv_btnm_get_style(kb, LV_BTNM_STYLE_BTN_TGL_PR);
+            style = lv_btnm_get_style(kb, LV_BTNM_STYLE_BTN_TGL_PR);
+            break;
         case LV_KB_STYLE_BTN_INA:
-            return lv_btnm_get_style(kb, LV_BTNM_STYLE_BTN_INA);
+            style = lv_btnm_get_style(kb, LV_BTNM_STYLE_BTN_INA);
+            break;
         default:
-            return NULL;
+            style = NULL;
+            break;
     }
 
-    /*To avoid warning*/
-    return NULL;
+    return style;
 }
 
 /**********************
@@ -411,13 +419,14 @@ static lv_res_t lv_kb_def_action(lv_obj_t * kb, const char * txt)
             lv_kb_set_ta(kb, NULL);         /*De-assign the text area  to hide it cursor if needed*/
             lv_obj_del(kb);
         }
-        return LV_RES_INV;
+        return res;
     } else if(strcmp(txt, SYMBOL_OK) == 0) {
         if(ext->ok_action) res = ext->ok_action(kb);
         else {
             lv_kb_set_ta(kb, NULL);         /*De-assign the text area to hide it cursor if needed*/
             res = lv_obj_del(kb);
         }
+        return res;
     }
 
     if(res != LV_RES_OK) return res;	/*The keyboard might be deleted in the actions*/
