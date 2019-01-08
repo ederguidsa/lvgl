@@ -63,6 +63,15 @@ LV_FONT_DECLARE(lv_font_dejavu_10_cyrillic);
 LV_FONT_DECLARE(lv_font_symbol_10);
 #endif
 
+#if USE_LV_FONT_SIJI_10
+LV_FONT_DECLARE(lv_font_siji_10);
+#endif
+
+/*12 px */
+#if USE_LV_FONT_SIJI_12
+LV_FONT_DECLARE(lv_font_siji_12);
+#endif
+
 /*20 px */
 #if USE_LV_FONT_DEJAVU_20
 LV_FONT_DECLARE(lv_font_dejavu_20);
