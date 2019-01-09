@@ -1207,7 +1207,7 @@ static const uint8_t lv_font_dejavu_10_glyph_bitmap[] = {
 
 
     /*Unicode: U+007c (|) , Width: 1 */
-    0x00,  //.
+    0x80,  //@
     0x80,  //@
     0x80,  //@
     0x80,  //@

@@ -72,6 +72,11 @@ LV_FONT_DECLARE(lv_font_siji_10);
 LV_FONT_DECLARE(lv_font_siji_12);
 #endif
 
+/*16 px */
+#if USE_LV_FONT_ARIAL_BOLD_16
+LV_FONT_DECLARE(lv_font_arial_bold_16);
+#endif
+
 /*20 px */
 #if USE_LV_FONT_DEJAVU_20
 LV_FONT_DECLARE(lv_font_dejavu_20);
